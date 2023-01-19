@@ -5,17 +5,7 @@ import java.util.*;
 public class SupermercadoMain {
 static Scanner sc=new Scanner(System.in);
 	public static void main(String[] args) {
-		HashSet<String>carrito=new HashSet<>();
-		ArrayList<String>funcionRellenar=new ArrayList<>();
-		int num=0;
-		while(num !=6) {
-			mostrarMenu();
-			System.out.println("Escoja una opcion");
-			num=sc.nextInt();
-			estructuraCondicional(num, carrito, funcionRellenar);
-			System.out.println("\n");
-		}
-
+		bucle();
 	}
 	
 	public static void mostrarMenu() {
@@ -122,6 +112,18 @@ static Scanner sc=new Scanner(System.in);
 			}else System.out.println("El producto introducido no está disponible");
 		}else System.out.println("Producto no encontrado en la cesta");
 		return cambio;
+	}
+	public static void bucle() {
+		HashSet<String>carrito=new HashSet<>();
+		ArrayList<String>funcionRellenar=new ArrayList<>();
+		int num=0;
+		while(num !=6) {
+			mostrarMenu();
+			System.out.println("Escoja una opcion");
+			num=sc.nextInt();
+			estructuraCondicional(num, carrito, funcionRellenar);
+			System.out.println("\n");
+		}
 	}
 }
 
