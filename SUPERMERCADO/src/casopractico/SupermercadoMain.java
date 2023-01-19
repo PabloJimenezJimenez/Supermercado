@@ -5,7 +5,7 @@ import java.util.*;
 public class SupermercadoMain {
 static Scanner sc=new Scanner(System.in);
 	public static void main(String[] args) {
-		bucle();
+		acceso();
 	}
 	
 	public static void mostrarMenu() {
@@ -124,6 +124,100 @@ static Scanner sc=new Scanner(System.in);
 			estructuraCondicional(num, carrito, funcionRellenar);
 			System.out.println("\n");
 		}
+	}
+	
+	public static void acceso() {
+		
+		System.out.println("*****ACCESO*****");
+		System.out.println("1.  Personal del supermercado");
+		System.out.println("2.  Cliente");
+		
+		System.out.println(" ");
+		System.out.println("Donde quieres acceder");
+		int num = sc.nextInt();
+		
+		if (num==1) {
+			
+			accesoSupermercado();
+		}else if(num==2) {
+			
+			bucle();
+		}else
+			
+			System.out.println("Introduzca un numero válido");
+			
+		
+	}
+	
+	public static void accesoSupermercado() {
+		
+		int cont = 0;
+		
+		while(cont<3) {
+		
+		System.out.println("Introduce la contraseña");
+		
+		String contraseña = sc.next();
+		
+		if (contraseña.equals("J4v4d0n4")) {
+			
+			System.out.println("Contraseña correcta");
+			menuPersonal();
+			
+		}else {
+			
+			System.out.println("Contraseña incorrecta");
+			
+			
+			if(cont==3) {
+				
+				System.out.println("Numero de intentos acabados");
+				}
+				
+			}
+		
+			cont++;
+		}
+	}
+	
+	public static void menuPersonal() {
+		
+		System.out.println(" ");
+		System.out.println("******MENÚ********");
+		System.out.println("1.  Mostrar productos del supermercado");
+		System.out.println("2.  Añadir el producto");
+		System.out.println("3.  Eliminar productos");
+		System.out.println("4.  Modificar productos");
+		System.out.println("5.  Salir");
+	}
+	
+	public static void menuCliente() {
+		
+		System.out.println("******MENÚ********");
+		System.out.println("1.  Ver productos del supermercado");
+		System.out.println("2.  Añadir productos al carrito");
+		System.out.println("3.  Mostrar carrito de la compra ordenado");
+		System.out.println("4.  Consultar producto del carrito");
+		System.out.println("5.  Elimiinar producto");
+		System.out.println("6.  Salir");
+		
+	}
+	
+	public static HashSet<String>opcion1Modificada(){
+		
+		HashSet<String>compra = new  HashSet<>();
+		
+		LinkedList<String> lista = new LinkedList<>();
+		
+		System.out.println("Introduce los productos que quieras:");
+		
+		String productos = sc.nextLine();
+		
+		String [] arrayproductos = productos.split(",");
+		
+		compra.add(productos);
+		
+		return compra;
 	}
 }
 
