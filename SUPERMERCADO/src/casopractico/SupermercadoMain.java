@@ -148,31 +148,31 @@ static Scanner sc=new Scanner(System.in);
 		
 		int cont = 0;
 		
-		while(cont<3) {
+		String contraseña= "";
 		
-		System.out.println("Introduce la contraseña");
+		while(cont<3 && !contraseña.equals("J4v4d0n4")) {
 		
-		String contraseña = sc.next();
+			System.out.println("Introduce la contraseña");
 		
-		if (contraseña.equals("J4v4d0n4")) {
+			contraseña=sc.next();
+		
+			if (contraseña.equals("J4v4d0n4")) {
 			
-			System.out.println("Contraseña correcta");
-			menuPersonal();
+				System.out.println("Contraseña correcta");
+				buclePersonal();
 			
-		}else {
+			}else {
 			
-			System.out.println("Contraseña incorrecta");
-			
+				System.out.println("Contraseña incorrecta");
 			
 			if(cont==3) {
 				
 				System.out.println("Numero de intentos acabados");
-				}
-				
+					}
+				}	
 			}
 		
 			cont++;
-		}
 	}
 	
 	public static void menuPersonal() {
@@ -199,7 +199,77 @@ static Scanner sc=new Scanner(System.in);
 		}
 		return carrito;
 	}
+	
+		
+	public static void buclePersonal() {
+		int num=0;
+		while(num !=5) {
+			menuPersonal();;
+			System.out.println("Escoja una opcion");
+			num=sc.nextInt();
+			estructuraCondicionalPersonal(num);
+			System.out.println("\n");
+		}
+	}
+
+	public static void estructuraCondicionalPersonal(int num) {
+		HashSet<String>articulos=articulosSupermercado();
+		HashSet<String>articulosModificado= new HashSet<>();
+		HashSet<String> funcionrellenar = new HashSet<>();
+		switch(num) {
+			case 1:mostrarProductosSupermercado(articulos);break;
+			case 2:{
+				funcionrellenar=añadirProductos(articulos);
+				articulos.addAll(funcionrellenar);
+				System.out.println(articulos);
+				break;
+			}
+			case 3:mostrarCarrito(articulos);break;
+			case 4:{
+				articulosModificado=modificarCarritoPersonal(articulos);
+				articulos.clear();
+				articulos.addAll(articulosModificado);
+				System.out.println(articulos);
+				break;}
+			case 5:break;
+			default:
+		}
+
+	}
+		public static HashSet<String> modificarCarritoPersonal(HashSet<String> articulos){
+			HashSet<String>cambio=new HashSet<>();
+			cambio.addAll(articulos);
+			String productoCambiar;
+			String productoCambio;
+			System.out.println("Introduce el producto a cambiar");
+			productoCambiar=sc.next();
+			if(articulos.contains(productoCambiar)) {
+				System.out.println("Introduce el nuevo producto");
+				productoCambio=sc.next();
+					cambio.remove(productoCambiar);
+					cambio.add(productoCambio);
+			}else System.out.println("Producto no encontrado en la lista");
+			return cambio;
+		}
+		
+	
+	
+		public static HashSet<String> añadirProductos(HashSet<String>articulos) {
+		
+		System.out.println("Que productos quieres añadir");
+		String productosAñadidos="";
+		while(productosAñadidos.equals("")) {
+			productosAñadidos=sc.nextLine();
+		}
+		String [] productos = productosAñadidos.split(",");
+		articulos.addAll(Arrays.asList(productos));
+		
+		return articulos;
+		
+	}
+	
 }
+
 
 
 
