@@ -57,22 +57,17 @@ static Scanner sc=new Scanner(System.in);
 	}
 	
 	public static ArrayList<String>carrito(HashSet<String>cesta,HashSet<String>articulos){
-		int num=0;
-		do{
-			System.out.println("¿Cuantos productos desea añadir a la cesta?");
-			num=sc.nextInt();
-			}while(num<1|| num>20);
-		while(num>0) {
-			System.out.println("Introduce el producto que desea añadir a su carrito");
-			String producto=sc.next();
-			if(cesta.contains(producto) || !articulos.contains(producto)) {
-				System.out.println("Producto no he encontrado o añadido anteriormente");
-				num++;
-			}else {
-				cesta.add(producto);
-			}
-			num--;
+		ArrayList<String>guardarElemento=new ArrayList<>();
+		String[]arrayProductos;
+		System.out.println("Introduce el producto que desea añadir a su carrito");
+		String prCar="";
+		while(prCar.equals("")) {
+			prCar=sc.nextLine().toLowerCase();
 		}
+		
+		arrayProductos=arrayCarrito(prCar);
+		guardarElemento.addAll(Arrays.asList(arrayProductos));
+		cesta=anadirCarrito(cesta, guardarElemento,articulos);
 		ArrayList<String>cestaCliente=cestaCliente(cesta);
 		return cestaCliente;
 	}
@@ -113,7 +108,7 @@ static Scanner sc=new Scanner(System.in);
 		}else System.out.println("Producto no encontrado en la cesta");
 		return cambio;
 	}
-	public static void bucle() {
+	public static void bucleCliente() {
 		HashSet<String>carrito=new HashSet<>();
 		ArrayList<String>funcionRellenar=new ArrayList<>();
 		int num=0;
@@ -141,7 +136,7 @@ static Scanner sc=new Scanner(System.in);
 			accesoSupermercado();
 		}else if(num==2) {
 			
-			bucle();
+			bucleCliente();
 		}else
 			
 			System.out.println("Introduzca un numero válido");
@@ -191,33 +186,18 @@ static Scanner sc=new Scanner(System.in);
 		System.out.println("5.  Salir");
 	}
 	
-	public static void menuCliente() {
-		
-		System.out.println("******MENÚ********");
-		System.out.println("1.  Ver productos del supermercado");
-		System.out.println("2.  Añadir productos al carrito");
-		System.out.println("3.  Mostrar carrito de la compra ordenado");
-		System.out.println("4.  Consultar producto del carrito");
-		System.out.println("5.  Elimiinar producto");
-		System.out.println("6.  Salir");
-		
+	public static String[]arrayCarrito(String entrada){
+		String[]arrayCarrito=entrada.split(" ");
+		return arrayCarrito;
 	}
 	
-	public static HashSet<String>opcion1Modificada(){
-		
-		HashSet<String>compra = new  HashSet<>();
-		
-		LinkedList<String> lista = new LinkedList<>();
-		
-		System.out.println("Introduce los productos que quieras:");
-		
-		String productos = sc.nextLine();
-		
-		String [] arrayproductos = productos.split(",");
-		
-		compra.add(productos);
-		
-		return compra;
+	public static HashSet<String> anadirCarrito(HashSet<String>carrito,ArrayList<String>guardarElemento,HashSet<String>articulos){
+		for(int i=0;i<guardarElemento.size();i++) {
+			if(!carrito.contains(guardarElemento.get(i))&& articulos.contains(guardarElemento.get(i))) {
+				carrito.add(guardarElemento.get(i));
+			}
+		}
+		return carrito;
 	}
 }
 
