@@ -27,11 +27,14 @@ static Scanner sc=new Scanner(System.in);
 		return articulos;
 	}
 	
-	public static void estructuraCondicional(int num,HashSet<String>carrito,ArrayList<String>funcionRellenar) {
+	public static void estructuraCondicional(int num,ArrayList<String>carrito,ArrayList<String>funcionRellenar) {
 		HashSet<String>articulos=articulosSupermercado();
 		HashSet<String>carritoModificado= new HashSet<>();
 		switch(num) {
-			case 1:mostrarProductosSupermercado(articulos);break;
+			case 1:{
+				mostrarProductosSupermercado(articulos);
+				break;
+			}
 			case 2:{
 				funcionRellenar=carrito(carrito, articulos);
 				carrito.addAll(funcionRellenar);
@@ -53,13 +56,14 @@ static Scanner sc=new Scanner(System.in);
 	public static void mostrarProductosSupermercado(HashSet<String>articulos) {
 		TreeSet<String>articulosOrdenados= new TreeSet<>();
 		articulosOrdenados.addAll(articulos);
+		
 		System.out.println(articulosOrdenados);
 	}
 	
-	public static ArrayList<String>carrito(HashSet<String>cesta,HashSet<String>articulos){
+	public static ArrayList<String>carrito(ArrayList<String>cesta,HashSet<String>articulos){
 		ArrayList<String>guardarElemento=new ArrayList<>();
 		String[]arrayProductos;
-		System.out.println("Introduce el producto que desea añadir a su carrito");
+		System.out.println("Introduce los producto que desea añadir a su carrito separados por coma");
 		String prCar="";
 		while(prCar.equals("")) {
 			prCar=sc.nextLine().toLowerCase();
@@ -72,18 +76,18 @@ static Scanner sc=new Scanner(System.in);
 		return cestaCliente;
 	}
 	
-	public static ArrayList<String>cestaCliente(HashSet<String>cesta){
+	public static ArrayList<String>cestaCliente(ArrayList<String>cesta){
 		ArrayList<String>cestaCliente=new ArrayList<>();
 		cestaCliente.addAll(cesta);
 		return cestaCliente;
 	}
 	
-	public static void mostrarCarrito(HashSet<String>carrito) {
+	public static void mostrarCarrito(ArrayList<String>carrito) {
 		TreeSet<String>mostrarOrdenado=new TreeSet<>();
 		mostrarOrdenado.addAll(carrito);
 		System.out.println(mostrarOrdenado);
 	}
-	public static void contenidoCarrito(HashSet<String>carrito) {
+	public static void contenidoCarrito(ArrayList<String>carrito) {
 		System.out.println("Introduzca el producto a buscar");
 		String producto=sc.next();
 		if(carrito.contains(producto)) {
@@ -91,7 +95,7 @@ static Scanner sc=new Scanner(System.in);
 		}else System.out.println("El producto "+producto+" no está en la lista");
 	}
 	
-	public static HashSet<String> modificarCarrito(HashSet<String>carrito, HashSet<String> articulos){
+	public static HashSet<String> modificarCarrito(ArrayList<String>carrito, HashSet<String> articulos){
 		HashSet<String>cambio=new HashSet<>();
 		cambio.addAll(carrito);
 		String productoCambiar;
@@ -109,7 +113,7 @@ static Scanner sc=new Scanner(System.in);
 		return cambio;
 	}
 	public static void bucleCliente() {
-		HashSet<String>carrito=new HashSet<>();
+		ArrayList<String>carrito=new ArrayList<>();
 		ArrayList<String>funcionRellenar=new ArrayList<>();
 		int num=0;
 		while(num !=6) {
@@ -144,6 +148,7 @@ static Scanner sc=new Scanner(System.in);
 		
 	}
 	
+
 	public static void accesoSupermercado() {
 		
 		int cont = 0;
@@ -187,89 +192,147 @@ static Scanner sc=new Scanner(System.in);
 	}
 	
 	public static String[]arrayCarrito(String entrada){
-		String[]arrayCarrito=entrada.split(" ");
+		String[]arrayCarrito=entrada.split(",");
 		return arrayCarrito;
 	}
 	
-	public static HashSet<String> anadirCarrito(HashSet<String>carrito,ArrayList<String>guardarElemento,HashSet<String>articulos){
+	public static ArrayList<String> anadirCarrito(ArrayList<String>carrito,ArrayList<String>guardarElemento,HashSet<String>articulos){
 		for(int i=0;i<guardarElemento.size();i++) {
 			if(!carrito.contains(guardarElemento.get(i))&& articulos.contains(guardarElemento.get(i))) {
 				carrito.add(guardarElemento.get(i));
-			}
+			}else System.out.println("El producto "+guardarElemento.get(i)+" no está en stock y no se ha añadido a su cesta");
 		}
 		return carrito;
 	}
 	
 		
 	public static void buclePersonal() {
+		HashSet<String>carrito=new HashSet<>();
 		int num=0;
+		ArrayList<Integer>numprevio=new ArrayList<>();
 		while(num !=5) {
 			menuPersonal();;
 			System.out.println("Escoja una opcion");
+			numprevio.add(num);
 			num=sc.nextInt();
-			estructuraCondicionalPersonal(num);
-			System.out.println("\n");
+			estructuraCondicionalPersonal(num,carrito,numprevio);
 		}
 	}
 
-	public static void estructuraCondicionalPersonal(int num) {
+	public static void estructuraCondicionalPersonal(int num,HashSet<String>carrito,ArrayList<Integer>numprevio) {
 		HashSet<String>articulos=articulosSupermercado();
-		HashSet<String>articulosModificado= new HashSet<>();
-		HashSet<String> funcionrellenar = new HashSet<>();
+		HashSet<String>carritoModificado= new HashSet<>();
+		HashSet<String>funcionEliminar= new HashSet<>();
+		ArrayList<String>funcionRellenar= new ArrayList<>();
+		boolean comprobarFuncion=soloDos(numprevio);
 		switch(num) {
-			case 1:mostrarProductosSupermercado(articulos);break;
-			case 2:{
-				funcionrellenar=añadirProductos(articulos);
-				articulos.addAll(funcionrellenar);
-				System.out.println(articulos);
+			case 1:{
+				if(carrito.isEmpty()|| (comprobarFuncion==true)) {
+					carrito.addAll(articulos);
+				}
+				articulos.clear();
+				articulos.addAll(carrito);
+				mostrarProductosSupermercado(articulos);
 				break;
 			}
-			case 3:mostrarCarrito(articulos);break;
+			case 2:{
+				funcionRellenar=anadirElementos(carrito, articulos);
+				carrito.addAll(funcionRellenar);
+				break;
+			}
+			case 3:{
+				funcionEliminar=eliminarProducto(articulos, carrito);
+				carrito.clear();
+				carrito.addAll(funcionEliminar);
+				break;
+			}
 			case 4:{
-				articulosModificado=modificarCarritoPersonal(articulos);
-				articulos.clear();
-				articulos.addAll(articulosModificado);
-				System.out.println(articulos);
-				break;}
+				if(!numprevio.contains(1)) {
+					carrito.addAll(articulos);
+				}
+				carritoModificado=modificarCarritoPersonal(carrito,articulos);
+				carrito.clear();
+				carrito.addAll(carritoModificado);
+				break;
+			}
 			case 5:break;
-			default:
+			default: 
 		}
-
 	}
-		public static HashSet<String> modificarCarritoPersonal(HashSet<String> articulos){
-			HashSet<String>cambio=new HashSet<>();
-			cambio.addAll(articulos);
-			String productoCambiar;
-			String productoCambio;
-			System.out.println("Introduce el producto a cambiar");
-			productoCambiar=sc.next();
-			if(articulos.contains(productoCambiar)) {
-				System.out.println("Introduce el nuevo producto");
-				productoCambio=sc.next();
-					cambio.remove(productoCambiar);
-					cambio.add(productoCambio);
-			}else System.out.println("Producto no encontrado en la lista");
-			return cambio;
-		}
-		
-	
-	
-		public static HashSet<String> añadirProductos(HashSet<String>articulos) {
-		
-		System.out.println("Que productos quieres añadir");
-		String productosAñadidos="";
-		while(productosAñadidos.equals("")) {
-			productosAñadidos=sc.nextLine();
-		}
-		String [] productos = productosAñadidos.split(",");
-		articulos.addAll(Arrays.asList(productos));
-		
-		return articulos;
-		
+	public static HashSet<String> modificarCarritoPersonal(HashSet<String> carrito,HashSet<String> articulos){
+		HashSet<String>cambio=new HashSet<>();
+		cambio.addAll(carrito);
+		String productoCambiar;
+		String productoCambio;
+		System.out.println("Introduce el producto a cambiar");
+		productoCambiar=sc.next();
+		if(cambio.contains(productoCambiar)) {
+			System.out.println("Introduce el nuevo producto");
+			productoCambio=sc.next();
+			if(!cambio.contains(productoCambio)) {
+				cambio.remove(productoCambiar);
+				cambio.add(productoCambio);
+			}else System.out.println("El producto introducido esta ya en stock");
+		}else System.out.println("Producto no encontrado");
+		return cambio;
 	}
-	
+		
+		public static ArrayList<String>anadirElementos(HashSet<String>cesta,HashSet<String>articulos){
+			ArrayList<String>guardarElemento=new ArrayList<>();
+			guardarElemento.addAll(articulos);
+			String[]arrayProductos;
+			System.out.println("Introduce los producto que desea añadir separados por coma");
+			String prCar="";
+			while(prCar.equals("")) {
+				prCar=sc.nextLine().toLowerCase();
+			}
+			
+			arrayProductos=arrayCarrito(prCar);
+			guardarElemento.addAll(Arrays.asList(arrayProductos));
+			cesta=anadirStock(cesta, guardarElemento,articulos);
+			ArrayList<String>cestaCliente=stockSupermercado(cesta);
+			return cestaCliente;
+		}
+		public static HashSet<String> anadirStock(HashSet<String>carrito,ArrayList<String>guardarElemento,HashSet<String>articulos){
+			for(int i=0;i<guardarElemento.size();i++) {
+				if(!carrito.contains(guardarElemento.get(i))&& !articulos.contains(guardarElemento.get(i))) {
+					carrito.add(guardarElemento.get(i));
+				}
+			}
+			return carrito;
+		}
+		
+		public static HashSet<String>eliminarProducto(HashSet<String> articulos,HashSet<String> carrito){
+			HashSet<String>eliminarProducto=new HashSet<>();
+			eliminarProducto.addAll(carrito);
+			eliminarProducto.addAll(articulos);
+			System.out.println("¿Que producto desea eliminar?");
+			String productoELiminar= sc.next();
+			if (eliminarProducto.contains(productoELiminar)) {
+				eliminarProducto.remove(productoELiminar);
+			}else System.out.println("Producto no valido");
+			return eliminarProducto;
+		}
+		public static ArrayList<String>stockSupermercado(HashSet<String>cesta){
+			ArrayList<String>cestaCliente=new ArrayList<>();
+			cestaCliente.addAll(cesta);
+			return cestaCliente;
+		}
+		
+		public static boolean soloDos(ArrayList<Integer>numprevio) {
+			int cont=0;
+			for(int i=1;i<numprevio.size();i++) {
+				if(numprevio.get(i)!=2) {
+					cont++;
+					System.out.println(cont);
+				}
+			}
+			if(cont !=0) {
+				return false;
+			}else return true;
+			
+		}
 }
-
 
 
 
