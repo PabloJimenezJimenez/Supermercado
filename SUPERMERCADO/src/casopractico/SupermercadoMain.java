@@ -389,7 +389,7 @@ static Scanner sc=new Scanner(System.in);
 				prCar=sc.nextLine().toLowerCase();
 			}
 			//Quito los espacios que ha podido dejar el usuario
-			prCar.replace(" ", "");
+			prCar= prCar.replace(" ", "");
 			//Llamo a la funcion arrayCarrito
 			arrayProductos=arrayCarrito(prCar);
 			//Añado el array a la lista guardarElemento
