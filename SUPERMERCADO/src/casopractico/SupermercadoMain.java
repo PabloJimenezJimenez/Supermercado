@@ -223,10 +223,11 @@ static Scanner sc=new Scanner(System.in);
 				
 				System.out.println("Numero de intentos acabados");
 					}
-				}	
-			}
+				}
 			//Aumento el contador
 			cont++;
+			}
+			
 	}
 	
 	//Creo un procedimiento que me muestra las opciones a elegir por el personal
