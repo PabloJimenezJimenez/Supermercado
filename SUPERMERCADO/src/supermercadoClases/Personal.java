@@ -16,4 +16,14 @@ public class Personal {
 		
 	}
 	
+	public void acceso(String contra) {
+		
+		if (contra.equals("J4v4d0n4")) {
+			
+			System.out.println("Contraseña correcta");
+		}else
+			System.out.println("Contraseña incorrecta");
+		
+	}
+	
 }
