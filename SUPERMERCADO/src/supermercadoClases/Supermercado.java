@@ -1,5 +1,9 @@
 package supermercadoClases;
 
-public class Supermercado {
+import java.util.HashSet;
 
+public class Supermercado {
+	private HashSet<Personal>empleados;
+	private HashSet<Productos>productos;
+	private HashSet<Cliente>clientes;
 }
