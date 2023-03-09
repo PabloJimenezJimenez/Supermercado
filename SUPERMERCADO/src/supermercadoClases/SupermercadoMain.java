@@ -11,7 +11,7 @@ static Scanner sc;
 		Personal uno = new Personal("Julian", "Malasaña", 1);
 		
 		//acceso(uno);
-
+		
 	
 	}
 
