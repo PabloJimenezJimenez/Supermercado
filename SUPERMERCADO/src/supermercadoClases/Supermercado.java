@@ -10,11 +10,13 @@ public class Supermercado {
 	private HashSet<Cliente>clientes;
 	private String nombre;
 	public Supermercado() {
+
 		nombre="JAVADONA";
 		empleados= new HashSet<>();
 		productos= new HashSet<>();
 		clientes= new HashSet<>();
 		productosIniciales();
+
 	}
 
 	public void anadirEmpleados(Personal empleados) {
