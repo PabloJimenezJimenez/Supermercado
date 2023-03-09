@@ -12,13 +12,7 @@ static Scanner sc;
 		
 		//acceso(uno);
 
-		
-		
-		
-		
-		
-		
-		
+	
 	}
 
 	public static void mostrarMenu() {
