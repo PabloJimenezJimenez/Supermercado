@@ -6,9 +6,32 @@ public class Supermercado {
 	private HashSet<Personal>empleados;
 	private HashSet<Productos>productos;
 	private HashSet<Cliente>clientes;
+	private String nombre;
 	public Supermercado() {
-		// TODO Auto-generated constructor stub
+		nombre="JAVADONA";
+		empleados= new HashSet<>();
+		productos= new HashSet<>();
+		clientes= new HashSet<>();
+		productosIniciales();
 	}
+
+	public void anadirEmpleados(Personal empleados) {
+		this.empleados.add(empleados);
+	}
+	public void anadirProductos(Productos productos) {
+		this.productos.add(productos);
+	}
+	public void anadirClientes(Cliente clientes) {
+		this.clientes.add(clientes) ;
+	}
+	public void eliminarProducto(String nombre) {
+		for (Productos producto : productos) {
+			if(producto.getNombre().equals(nombre)) {
+				productos.remove(producto);
+			}
+		}
+	}
+	
 	private void productosIniciales(){
 		productos.add(new Productos("salmon", 10, 20.30, 1, "Salmon S.A", Secciones.PESCADERIA));
 		productos.add(new Productos("merluza", 20, 8.50, 2, "Pescanova", Secciones.PESCADERIA));
