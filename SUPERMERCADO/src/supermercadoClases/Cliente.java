@@ -17,15 +17,7 @@ public class Cliente {
 		this.cod = cod;
 		this.carrito=carrito;
 	}
-	
-	public void añadirCarrito(HashSet<Productos> carrito) {
-		
-		
-	}
-	
-	public void mostrarCarrito(HashSet<Productos> carrito) {
-		
-	}
+
 	
 
 }

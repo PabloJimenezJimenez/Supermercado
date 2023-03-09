@@ -1,5 +1,6 @@
 package supermercadoClases;
 
+import java.util.HashMap;
 import java.util.Scanner;
 
 public class SupermercadoMain {
@@ -7,10 +8,17 @@ static Scanner sc;
 	public static void main(String[] args) {
 		sc= new Scanner(System.in);
 		
-		Personal uno = new Personal("Pablo", "Jimenez", 1);
+		Personal uno = new Personal("Julian", "Malasaña", 1);
 		
-		acceso(uno);
+		//acceso(uno);
 
+		
+		
+		
+		
+		
+		
+		
 	}
 
 	public static void mostrarMenu() {

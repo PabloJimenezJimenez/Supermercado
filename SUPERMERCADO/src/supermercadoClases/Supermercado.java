@@ -7,7 +7,7 @@ public class Supermercado {
 	private HashSet<Productos>productos;
 	private HashSet<Cliente>clientes;
 	public Supermercado() {
-		// TODO Auto-generated constructor stub
+		
 	}
 	private void productosIniciales(){
 		productos.add(new Productos("salmon", 10, 20.30, 1, "Salmon S.A", Secciones.PESCADERIA));
