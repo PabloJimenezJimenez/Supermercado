@@ -1,8 +1,10 @@
 package supermercadoClases;
 
 import java.util.HashSet;
+import java.util.Scanner;
 
 public class Supermercado {
+	static Scanner sc=new Scanner(System.in);
 	private HashSet<Personal>empleados;
 	private HashSet<Productos>productos;
 	private HashSet<Cliente>clientes;
@@ -28,6 +30,25 @@ public class Supermercado {
 		for (Productos producto : productos) {
 			if(producto.getNombre().equals(nombre)) {
 				productos.remove(producto);
+			}
+		}
+	}
+	
+	public void modificaProducto(String nombre) {
+		for(Productos producto : productos) {
+			if(producto.getNombre().equals(nombre)){
+				System.out.println("Que deseas cambiar:");
+				menuOpciones();
+				int num=sc.nextInt();
+				switchOpciones(num,producto);
+			}
+		}
+	}
+	
+	public void comprobarStock() {
+		for(Productos producto : productos) {
+			if(producto.getStock()<10){
+				System.out.println(producto.getNombre()+" "+producto.getStock());
 			}
 		}
 	}
@@ -60,5 +81,26 @@ public class Supermercado {
 		productos.add(new Productos("Yogurt", 240, 0.45, 25,"Ganaderias Cantabras", Secciones.LACTEOS));
 		productos.add(new Productos("Yogurt sin lactosa", 240, 0.65, 26,"Ganaderias Cantabras", Secciones.LACTEOS));
 		productos.add(new Productos("Yogurt liquido", 120, 1.45, 27,"Ganaderias Cantabras", Secciones.LACTEOS));
+	}
+	
+	private void menuOpciones() {
+		System.out.println("1. STOCK ");
+		System.out.println("2. PRECIO ");
+	}
+	
+	private void switchOpciones(int num,Productos producto) {
+		switch(num) {
+		case 1:{
+			System.out.println("Nuevo Stock:");
+			int stock=sc.nextInt();
+			producto.setStock(stock);
+			break;}
+		case 2:{
+			System.out.println("Nuevo precio:");
+			double precio=sc.nextDouble();
+			producto.setPrecio(precio);
+			break;}
+		default:
+		}
 	}
 }

@@ -7,9 +7,6 @@ public class Productos {
 	private int cod;
 	private String marca;
 	private Secciones seccion;
-	public Productos() {
-		
-	}
 	public Productos(String nombre, int stock, double precio, int cod, String marca, 
 			Secciones seccion) {
 		this.nombre = nombre;
