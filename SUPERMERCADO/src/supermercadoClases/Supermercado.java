@@ -31,11 +31,14 @@ public class Supermercado {
 	public void eliminarProducto(String nombre) {
 		for (Productos producto : productos) {
 			if(producto.getNombre().equals(nombre)) {
-				productos.remove(producto);
+				productos.remove(producto);break;
 			}
 		}
 	}
-	
+	public void cambiarNombre(String nombre) {
+		this.nombre = nombre;
+	}
+
 	public void modificaProducto(String nombre) {
 		for(Productos producto : productos) {
 			if(producto.getNombre().equals(nombre)){
@@ -54,7 +57,63 @@ public class Supermercado {
 			}
 		}
 	}
+	public int comprobarCod() {
+		int cont=1;
+		for(Productos producto : productos) {
+			producto.getCod();
+			cont++;
+			
+		}
+		return cont;
+	}
 	
+	public void mostrarProductosPorSecciones() {
+		System.out.println(nombre);
+		System.out.println("-------------------");
+		System.out.println("FRUTERIA: ");
+		for(Productos producto: productos) {
+			if(producto.getSeccion().equals(Secciones.FRUTERIA)) {
+				producto.mostrarProducto();
+			}
+		}
+		System.out.println("-------------------");
+		System.out.println("CARNICERIA: ");
+		for(Productos producto: productos) {
+			if(producto.getSeccion().equals(Secciones.CARNICERIA)) {
+				producto.mostrarProducto();
+			}
+		}
+		System.out.println("-------------------");
+		System.out.println("PESCADERIA: ");
+		for(Productos producto: productos) {
+			if(producto.getSeccion().equals(Secciones.PESCADERIA)) {
+				producto.mostrarProducto();
+			}
+		}
+		System.out.println("-------------------");
+		System.out.println("HOGAR: ");
+		for(Productos producto: productos) {
+			if(producto.getSeccion().equals(Secciones.HOGAR)) {
+				producto.mostrarProducto();
+			}
+		}
+		System.out.println("-------------------");
+		System.out.println("BEBIDAS: ");
+		for(Productos producto: productos) {
+			if(producto.getSeccion().equals(Secciones.BEBIDA)) {
+				producto.mostrarProducto();
+			}
+		}
+		System.out.println("-------------------");
+		System.out.println("LACTEOS: ");
+		for(Productos producto: productos) {
+			if(producto.getSeccion().equals(Secciones.LACTEOS)) {
+				producto.mostrarProducto();
+			}
+		}
+		System.out.println("-------------------");
+		
+	}
 	private void productosIniciales(){
 		productos.add(new Productos("salmon", 10, 20.30, 1, "Salmon S.A", Secciones.PESCADERIA));
 		productos.add(new Productos("merluza", 20, 8.50, 2, "Pescanova", Secciones.PESCADERIA));
