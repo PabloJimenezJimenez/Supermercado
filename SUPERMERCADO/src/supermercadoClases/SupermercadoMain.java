@@ -6,11 +6,13 @@ import java.util.Scanner;
 public class SupermercadoMain {
 static Scanner sc= new Scanner(System.in);
 	public static void main(String[] args) {
+		//Creacion de un objeto supermercado
 		Supermercado supermercado= new Supermercado();
+		//LLamo al procedimiento acceso
 		acceso(supermercado);
 	
 	}
-
+	//Procedimiento que enseña el menu de cliente
 	public static void menuCliente() {
 		System.out.println("****************MENU*****************");
 		System.out.println("1. Mostrar productos del supermercado");
@@ -21,6 +23,7 @@ static Scanner sc= new Scanner(System.in);
 		System.out.println("6. Salir");
 	}
 	
+	//Procedimiento que enseña el menu de personal
 	public static void menuPersonal(Supermercado supermercado) {
 		System.out.println("******MENÚ********");
 		System.out.println("1.  Mostrar productos del supermercado por seccion");
@@ -31,7 +34,8 @@ static Scanner sc= new Scanner(System.in);
 		System.out.println("6. Salir");
 	}
 	
-	
+	//Procedimiento acceso muestra los distintos tipos de acceso 
+	//y te permite acceder a ellos
 	public static void acceso(Supermercado supermercado) {
 		
 		System.out.println("*****ACCESO*****");
@@ -43,7 +47,7 @@ static Scanner sc= new Scanner(System.in);
 		int num = sc.nextInt();
 		
 		if (num==1) {
-			
+			//Llamo al procedimiento accesoSupermercado
 			accesoSupermercado(supermercado);
 		}else if(num==2) {
 			
@@ -53,7 +57,8 @@ static Scanner sc= new Scanner(System.in);
 			
 			System.out.println("Introduzca un numero válido");
 	}
-
+	
+	//Procedimiento accesoSupermercado
 	public static void accesoSupermercado(Supermercado supermercado) {
 		int cont = 0;
 		String contraseña= "";
@@ -67,6 +72,7 @@ static Scanner sc= new Scanner(System.in);
 			
 			}else {
 				System.out.println("Contraseña incorrecta");
+			//Si supera el numero de intentos le muestro el mensaje
 			if(cont==3) {
 				System.out.println("Numero de intentos acabados");
 				}
@@ -74,18 +80,21 @@ static Scanner sc= new Scanner(System.in);
 				cont++;		
 		}		
 	}
-	
+	//Procedimiento buclePersonal que se repite hasta que se da a la opcion 6
 	public static void buclePersonal(Supermercado supermercado) {
 		int num=0;
 		while(num!=6) {
+			//LLamo al procedimiento menuPersonal
 			menuPersonal(supermercado);
 			System.out.println("Introduce una opcion");
 			num=sc.nextInt();
+			//Llamo al procedimiento condicionalPersonal
 			condicionalPersonal(num, supermercado);
 			
 		}
 	}
-	
+	//Procedimiento en el cuel sequn el numero que haya elegido se realiza
+	//una accion u otra.
 	public static void condicionalPersonal(int num, Supermercado supermercado) {
 		switch(num) {
 		case 1:{
@@ -134,6 +143,8 @@ static Scanner sc= new Scanner(System.in);
 		}
 	}
 	
+	//Función que me sirve para poder elegir la seccion al añadir un nuevo
+	//producto.
 	public static Secciones seccionProducto() {
 		System.out.println("Introduzca el numero de la seccion a la que pertenece el "
 				+ "producto");
@@ -150,6 +161,7 @@ static Scanner sc= new Scanner(System.in);
 		}
 		return condicionalSecciones(opcion);
 	}
+	//Función que me devuelve la seccion elegida.
 	public static Secciones condicionalSecciones(int opc) {
 		switch(opc) {
 		case 1: return Secciones.FRUTERIA;
