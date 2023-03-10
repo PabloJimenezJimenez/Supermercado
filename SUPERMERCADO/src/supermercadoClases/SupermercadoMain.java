@@ -38,6 +38,7 @@ static Scanner sc;
 		if (num==1) {
 			
 			accesoSupermercado(uno);
+			
 		}else if(num==2) {
 			
 			//Llamar a la clase del cliente
