@@ -53,6 +53,11 @@ public class Productos {
 		this.seccion = seccion;
 	}
 	
+	public void mostrarProducto() {
+		System.out.println(nombre + " "+"precio:" + precio + "€/uds \n"
+				+ stock + " uds marca:" + marca + "\ncodIdentificacion="+ cod+"\n");
+	}
+	
 	
 	
 }
