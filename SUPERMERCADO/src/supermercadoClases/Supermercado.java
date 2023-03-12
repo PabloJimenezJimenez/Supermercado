@@ -4,10 +4,11 @@ import java.util.HashSet;
 import java.util.Scanner;
 
 public class Supermercado {
-	static Scanner sc=new Scanner(System.in);
+static Scanner sc=new Scanner(System.in);
 	private HashSet<Personal>empleados;
 	private HashSet<Productos>productos;
 	private HashSet<Cliente>clientes;
+	//private Carrito carrito;
 	private String nombre;
 	public Supermercado() {
 
@@ -15,6 +16,7 @@ public class Supermercado {
 		empleados= new HashSet<>();
 		productos= new HashSet<>();
 		clientes= new HashSet<>();
+		//this.carrito=carrito;
 		productosIniciales();
 
 	}
@@ -164,4 +166,20 @@ public class Supermercado {
 		default:
 		}
 	}
+	
+//	public Productos sacarProducto(String a) {
+//		
+//		for (Productos producto : productos) {
+//		
+//			if (producto.getNombre().equals(a)) {
+//				return producto;
+//			}
+//		}
+//		
+//	}
+//	
+	
+	
+	
+	
 }

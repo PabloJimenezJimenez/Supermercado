@@ -1,15 +1,19 @@
 package supermercadoClases;
 
 
+import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.Scanner;
+import java.util.TreeMap;
 
 public class SupermercadoMain {
 static Scanner sc= new Scanner(System.in);
 	public static void main(String[] args) {
 		//Creacion de un objeto supermercado
 		Supermercado supermercado= new Supermercado();
+		Carrito carrito = new Carrito();
 		//LLamo al procedimiento acceso
-		acceso(supermercado);
+		acceso(supermercado,carrito);
 	
 	}
 	//Procedimiento que enseña el menu de cliente
@@ -36,7 +40,7 @@ static Scanner sc= new Scanner(System.in);
 	
 	//Procedimiento acceso muestra los distintos tipos de acceso 
 	//y te permite acceder a ellos
-	public static void acceso(Supermercado supermercado) {
+	public static void acceso(Supermercado supermercado,Carrito carrito) {
 		
 		System.out.println("*****ACCESO*****");
 		System.out.println("1.  Personal del supermercado");
@@ -47,21 +51,115 @@ static Scanner sc= new Scanner(System.in);
 		int num = sc.nextInt();
 		
 		if (num==1) {
-
 			
-			accesoSupermercado(supermercado);
-			
-
 			//Llamo al procedimiento accesoSupermercado
 			accesoSupermercado(supermercado);
 
 		}else if(num==2) {
 			
 			//Llamar a la clase del cliente
+			bucleCliente(supermercado,carrito);
 			
 		}else
 			
 			System.out.println("Introduzca un numero válido");
+	}
+	
+	//Procedimiento acceso del cliente
+	public static void bucleCliente(Supermercado supermercado,Carrito carrito) {
+		System.out.println("BIENVENIDO AL SUPERMERCADO JAVADONA");
+		int num=0;
+		while(num!=8) {
+		menuCliente();
+		System.out.println("Introduce una opción:");
+		num=sc.nextInt();
+		//Lamamos al buclecliente
+		condicionalCliente(num, supermercado,carrito);
+		}
+	}
+	
+	//Procedimiento para las opciones del cliente
+	public static void condicionalCliente(int num,Supermercado supermercado,Carrito carrito) {
+		switch(num) {
+		case 1:{
+			//mostrar productos por seccion
+			supermercado.mostrarProductosPorSecciones();
+			break;
+		}
+		case 2:{
+			//comprobar seccion
+			System.out.println("¿Que sección quieres comprobar?");
+			String seccion = sc.next().toUpperCase();
+			if(seccion.equals(Secciones.values())) {
+				
+				Secciones.values();
+				
+			}else
+				System.out.println("Esa sección no existe");
+			
+			break;
+		}
+		case 3:{
+				//añadir producto del carrito
+				System.out.println("¿Que prodcuto quieres añadir al carrito?");
+				String nombre=sc.next();
+				
+				carrito.aniadirCarrito(null, num);
+			
+			}
+
+			break;
+		
+		case 4:{
+				//mostrar carrito
+				carrito.mostrarCarrito();
+			
+			break;
+		}
+		case 5:{
+				//consultar carrito
+				carrito.consultarCarrito(null);
+			break;
+		}
+		case 6:{
+				//elimiar produucto del carrito
+				carrito.eleminarProductoCarrito(null);
+			
+			break;
+		}
+		case 7:{
+			
+				//Pasar por caja
+				
+			TreeMap<Productos, Integer> carrito2 = new TreeMap<>();
+					
+			//hacemos el ticket de compra
+			System.out.println("TICKET DE COMPRA");
+			
+			Iterator<Productos> elemento = carrito2.keySet().iterator();
+			Iterator<Integer> numeros = carrito2.values().iterator();
+			
+			int total = 0;
+			
+			while(elemento.hasNext() && numeros.hasNext()) {
+				
+				int suma = numeros.next();
+				
+				System.out.println(elemento.next() + "		" + suma);
+				
+				total = total + suma;
+				
+					
+			}
+					
+			System.out.println("TOTAL" + "		" + total + " €");	
+				
+			break;
+		}
+		case 8:break;
+		default:System.out.println("Opcion no valida");
+		
+		}		
 	}
 	
 	//Procedimiento accesoSupermercado
