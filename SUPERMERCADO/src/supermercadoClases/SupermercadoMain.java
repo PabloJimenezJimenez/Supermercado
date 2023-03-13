@@ -19,12 +19,14 @@ static Scanner sc= new Scanner(System.in);
 	//Procedimiento que enseña el menu de cliente
 	public static void menuCliente() {
 		System.out.println("****************MENU*****************");
-		System.out.println("1. Mostrar productos del supermercado");
-		System.out.println("2. Añadir productos al carrito ");
-		System.out.println("3. Mostrar carrito de la compra ordenado");
-		System.out.println("4. Consultar producto de carrito");
-		System.out.println("5. Cambiar un producto por otro");
-		System.out.println("6. Salir");
+		System.out.println("1. Ver productos del supermercadmo por sección con sus precios");
+		System.out.println("2. Ver productos de una sección determinada con sus precios");
+		System.out.println("3. Añadir productos al carrito");
+		System.out.println("4. Mostrar carrito de la compra ordenado");
+		System.out.println("5. Consultar producto del carrito");
+		System.out.println("6. Eliminar producto");
+		System.out.println("7. Pasar por caja");
+		System.out.println("8. Salir");
 	}
 	
 	//Procedimiento que enseña el menu de personal
@@ -89,16 +91,23 @@ static Scanner sc= new Scanner(System.in);
 		case 2:{
 			//comprobar seccion
 			System.out.println("¿Que sección quieres comprobar?");
-			String seccion = sc.next().toUpperCase();
-			if(seccion.equals(Secciones.values())) {
-				
-				Secciones.values();
-				
-			}else
-				System.out.println("Esa sección no existe");
-			
+			String seccion = sc.next();
+			switch(seccion) {
+			case "Fruteria": 
+					System.out.println("FRUTERIA: ");
+				//	supermercado.
+					
+			case "Carniceria":
+			case "Pescaderia":
+			case "Hogar": 
+			case "Bebida": 
+			case "Lacteos": 
+			default: System.out.println("Esa sección no existe");;
+			}
 			break;
+			
 		}
+		
 		case 3:{
 				//añadir producto del carrito
 				System.out.println("¿Que prodcuto quieres añadir al carrito?");
@@ -277,6 +286,8 @@ static Scanner sc= new Scanner(System.in);
 		default: return null;
 		}
 	}
+
+
 }
 	
 
