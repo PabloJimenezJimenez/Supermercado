@@ -116,6 +116,26 @@ static Scanner sc=new Scanner(System.in);
 		System.out.println("-------------------");
 		
 	}
+	
+	public void mostrarProductoSeccion(Secciones seccion) {
+		System.out.println(nombre);
+		System.out.println("-------------------");
+		System.out.println(seccion.name());
+		for(Productos producto: productos) {
+			if(producto.getSeccion().equals(seccion)) {
+				producto.mostrarProducto();
+			}
+		}
+	}
+	
+	public Productos sacarProducto(String nombre) {
+		for(Productos producto: productos) {
+			if(producto.getNombre().equals(nombre)) {
+				return producto;
+			}
+		}
+		return null;
+	}
 	private void productosIniciales(){
 		productos.add(new Productos("salmon", 10, 20.30, 1, "Salmon S.A", Secciones.PESCADERIA));
 		productos.add(new Productos("merluza", 20, 8.50, 2, "Pescanova", Secciones.PESCADERIA));

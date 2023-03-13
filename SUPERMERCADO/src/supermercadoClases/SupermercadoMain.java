@@ -1,7 +1,6 @@
 package supermercadoClases;
 
 
-import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Scanner;
 import java.util.TreeMap;
@@ -89,31 +88,19 @@ static Scanner sc= new Scanner(System.in);
 			break;
 		}
 		case 2:{
-			//comprobar seccion
-			System.out.println("¿Que sección quieres comprobar?");
-			String seccion = sc.next();
-			switch(seccion) {
-			case "Fruteria": 
-					System.out.println("FRUTERIA: ");
-				//	supermercado.
-					
-			case "Carniceria":
-			case "Pescaderia":
-			case "Hogar": 
-			case "Bebida": 
-			case "Lacteos": 
-			default: System.out.println("Esa sección no existe");;
-			}
-			break;
-			
+			//muestro el producto de una seccion 
+			Secciones seccionBuscar=seccionProducto();
+			supermercado.mostrarProductoSeccion(seccionBuscar);
+			break;	
 		}
 		
 		case 3:{
 				//añadir producto del carrito
-				System.out.println("¿Que prodcuto quieres añadir al carrito?");
+				System.out.println("¿Que producuto quieres añadir al carrito?");
 				String nombre=sc.next();
-				
-				carrito.aniadirCarrito(null, num);
+				Productos a= supermercado.sacarProducto(nombre);
+				int cant=sc.nextInt();
+				carrito.aniadirCarrito(a,cant);
 			
 			}
 
@@ -127,12 +114,18 @@ static Scanner sc= new Scanner(System.in);
 		}
 		case 5:{
 				//consultar carrito
-				carrito.consultarCarrito(null);
+				System.out.println("Producto a consultar:");
+				String nombre=sc.next();
+				Productos a= supermercado.sacarProducto(nombre);
+				carrito.consultarCarrito(a);
 			break;
 		}
 		case 6:{
-				//elimiar produucto del carrito
-				carrito.eleminarProductoCarrito(null);
+				//eliminar producto
+				System.out.println("Producto a eliminar:");
+				String nombre=sc.next();
+				Productos a= supermercado.sacarProducto(nombre);
+				carrito.eleminarProductoCarrito(a);
 			
 			break;
 		}

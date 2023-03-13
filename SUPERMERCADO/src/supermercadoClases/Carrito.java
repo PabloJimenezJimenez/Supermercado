@@ -1,16 +1,14 @@
 package supermercadoClases;
 
-import java.util.HashMap;
-import java.util.Map;
 import java.util.TreeMap;
 
 
 public class Carrito {
 
-	private HashMap<Productos,Integer> carrito;
+	private TreeMap<Productos,Integer> carrito;
 	
 	public Carrito() {
-		this.carrito= new HashMap<>();
+		this.carrito= new TreeMap<>();
 		
 		
 	}
@@ -32,7 +30,8 @@ public class Carrito {
 
 	public void eleminarProductoCarrito(Productos a) {
 		
-		//int sumarstock= a.getStock()+carrito.values() ;
+		int sumarstock= a.getStock()+carrito.get(a);
+		a.setStock(sumarstock);
 		carrito.remove(a);
 		
 		
@@ -40,17 +39,16 @@ public class Carrito {
 	
 	public void mostrarCarrito() {
 		
-		TreeMap<Productos, Integer> carritoOrdenado= new TreeMap<>(carrito);
-		for (Productos elem : carritoOrdenado.keySet()) {
+		for (Productos elem : carrito.keySet()) {
 			
-			System.out.println(elem.getNombre() + " ----> " + carritoOrdenado.values());
+			System.out.println(elem.getNombre() + " ----> " + carrito.values());
 		}
 		
 	}
 	
-	public void consultarCarrito(String a) {
+	public void consultarCarrito(Productos a) {
 		
-		if(carrito.keySet().contains(a))
+		if(carrito.containsKey(a)==true)
 			System.out.println("El producto se encuentra en el carrito");
 		else
 			System.out.println("El producto no esta en el carrito");
