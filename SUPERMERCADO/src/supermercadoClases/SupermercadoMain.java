@@ -36,7 +36,7 @@ static Scanner sc= new Scanner(System.in);
 		System.out.println("3.  Eliminar productos");
 		System.out.println("4.  Modificar productos");
 		System.out.println("5.  Consultar productos con stock bajo");
-		System.out.println("6. 	Salir");
+		System.out.println("6. Salir");
 	}
 	
 	//Procedimiento acceso muestra los distintos tipos de acceso 
