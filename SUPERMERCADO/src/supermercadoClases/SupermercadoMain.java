@@ -101,10 +101,10 @@ static Scanner sc= new Scanner(System.in);
 				Productos a= supermercado.sacarProducto(nombre);
 				int cant=sc.nextInt();
 				carrito.aniadirCarrito(a,cant);
-			
+				break;
 			}
 
-			break;
+			
 		
 		case 4:{
 				//mostrar carrito
