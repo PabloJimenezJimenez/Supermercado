@@ -1,31 +1,31 @@
 package supermercadoClases;
 
-import java.util.TreeMap;
+import java.util.HashMap;
+import java.util.Map;
+
 
 
 public class Carrito {
 
-	private TreeMap<Productos,Integer> carrito;
+	private HashMap<Productos,Integer> carrito;
 	
 	public Carrito() {
-		this.carrito= new TreeMap<>();
+		this.carrito= new HashMap<>();
 		
 		
 	}
 	
 	
-	public void aniadirCarrito(Productos a, int cantidad) {
-		
-		int stockrestante=a.getStock()-cantidad;
-		if(stockrestante<0) {
-			System.out.println("No se puede añadir al carrito, ya que no hay productos");
-		}else {
-			
-			a.setStock(stockrestante);
-			carrito.put(a, cantidad);
-		
-		}
-		
+	public void aniadirCarrito(Productos a, Integer cantidad) {
+		if(a !=null) {
+			int stockrestante=a.getStock()-cantidad;
+			if(stockrestante<0) {
+				System.out.println("No se puede añadir al carrito, ya que no hay productos");
+			}else{
+				a.setStock(stockrestante);
+				carrito.put(a, cantidad);
+			}
+		}else System.out.println("Producto no encontrado en el supermercado");
 	}
 
 	public void eleminarProductoCarrito(Productos a) {
@@ -38,12 +38,15 @@ public class Carrito {
 	}
 	
 	public void mostrarCarrito() {
-		
-		for (Productos elem : carrito.keySet()) {
-			
-			System.out.println(elem.getNombre() + " ----> " + carrito.values());
+		/*TreeMap<Productos, Integer>productosOrdenados=new TreeMap<>();
+		for(Productos elem: carrito.keySet()) {
+			productosOrdenados.put(elem, carrito.get(elem));
 		}
-		
+		//mostrarTreeMap(productosOrdenados);
+		*/
+		for (Map.Entry<Productos, Integer> elem : carrito.entrySet()) {
+			System.out.printf("%-9s %duds %9.2f€/uds\n",elem.getKey().getNombre(),elem.getValue(),elem.getKey().getPrecio());
+		}
 	}
 	
 	public void consultarCarrito(Productos a) {
@@ -55,5 +58,18 @@ public class Carrito {
 		
 	}
 	
-	
+	/*private void mostrarTreeMap(TreeMap<Productos, Integer>carro) {
+		for (Map.Entry<Productos, Integer> elem : carro.entrySet()) {
+			System.out.printf("%-9s %d€ \n",elem.getKey().getNombre(),elem.getValue());
+		}
+	}*/
+	public double totalCompra() {
+		double total=0;
+		//Recorro el diccionario
+		for (Map.Entry<Productos, Integer> elem : carrito.entrySet()) {
+			//sumo a total el valor del elemento
+			total+=elem.getValue()*elem.getKey().getPrecio();
+		}
+		return total;
+	}
 }
