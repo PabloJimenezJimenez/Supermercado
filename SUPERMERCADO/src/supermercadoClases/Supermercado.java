@@ -8,7 +8,6 @@ static Scanner sc=new Scanner(System.in);
 	private HashSet<Personal>empleados;
 	private HashSet<Productos>productos;
 	private HashSet<Cliente>clientes;
-	//private Carrito carrito;
 	private String nombre;
 	public Supermercado() {
 
@@ -48,7 +47,8 @@ static Scanner sc=new Scanner(System.in);
 
 	public void modificaProducto(String nombre) {
 		for(Productos producto : productos) {
-			if(producto.getNombre().equals(nombre)){
+			if(producto.getNombre().equalsIgnoreCase(nombre)){
+				System.out.println(producto.getNombre()+" "+producto.getMarca());
 				System.out.println("Que deseas cambiar:");
 				menuOpciones();
 				int num=sc.nextInt();
@@ -174,6 +174,7 @@ static Scanner sc=new Scanner(System.in);
 	private void menuOpciones() {
 		System.out.println("1. STOCK ");
 		System.out.println("2. PRECIO ");
+		System.out.println("3. NO MODIFICAR");
 	}
 	
 	private void switchOpciones(int num,Productos producto) {
@@ -188,6 +189,7 @@ static Scanner sc=new Scanner(System.in);
 			double precio=sc.nextDouble();
 			producto.setPrecio(precio);
 			break;}
+		case 3:break;
 		default:
 		}
 	}

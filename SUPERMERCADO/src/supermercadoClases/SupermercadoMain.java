@@ -25,18 +25,20 @@ static Scanner sc= new Scanner(System.in);
 		System.out.println("5. Consultar producto del carrito");
 		System.out.println("6. Eliminar producto");
 		System.out.println("7. Pasar por caja");
-		System.out.println("8. Salir");
+		System.out.println("8. Menu Personal");
+		System.out.println("9. Salir");
 	}
 	
 	//Procedimiento que enseña el menu de personal
-	public static void menuPersonal(Supermercado supermercado) {
+	public static void menuPersonal() {
 		System.out.println("******MENÚ********");
 		System.out.println("1.  Mostrar productos del supermercado por seccion");
 		System.out.println("2.  Añadir el producto");
 		System.out.println("3.  Eliminar productos");
 		System.out.println("4.  Modificar productos");
 		System.out.println("5.  Consultar productos con stock bajo");
-		System.out.println("6. Salir");
+		System.out.println("6.  Menu Cliente");
+		System.out.println("7. Salir");
 	}
 	
 	//Procedimiento acceso muestra los distintos tipos de acceso 
@@ -54,7 +56,7 @@ static Scanner sc= new Scanner(System.in);
 		if (num==1) {
 			
 			//Llamo al procedimiento accesoSupermercado
-			accesoSupermercado(supermercado);
+			accesoSupermercado(supermercado,carrito);
 
 		}else if(num==2) {
 			
@@ -140,14 +142,15 @@ static Scanner sc= new Scanner(System.in);
 			System.out.printf("%-20s %.2f€\n","TOTAL",total);
 			break;
 		}
-		case 8:break;
+		case 8:accesoSupermercado(supermercado,carrito);break;
+		case 9:break;
 		default:System.out.println("Opcion no valida");
 		
 		}		
 	}
 	
 	//Procedimiento accesoSupermercado
-	public static void accesoSupermercado(Supermercado supermercado) {
+	public static void accesoSupermercado(Supermercado supermercado,Carrito carrito) {
 		int cont = 0;
 		String contraseña= "";
 		while(cont<3 && !contraseña.equals("J4v4d0n4")) {
@@ -156,7 +159,7 @@ static Scanner sc= new Scanner(System.in);
 			if (contraseña.equals("J4v4d0n4")) {
 				System.out.println("Contraseña correcta");
 				//LLamo al procedimeinto buclePersonal
-				buclePersonal(supermercado);
+				buclePersonal(supermercado,carrito);
 			
 			}else {
 				System.out.println("Contraseña incorrecta");
@@ -169,21 +172,21 @@ static Scanner sc= new Scanner(System.in);
 		}		
 	}
 	//Procedimiento buclePersonal que se repite hasta que se da a la opcion 6
-	public static void buclePersonal(Supermercado supermercado) {
+	public static void buclePersonal(Supermercado supermercado,Carrito carrito) {
 		int num=0;
 		while(num!=6) {
 			//LLamo al procedimiento menuPersonal
-			menuPersonal(supermercado);
+			menuPersonal();
 			System.out.println("Introduce una opcion");
 			num=sc.nextInt();
 			//Llamo al procedimiento condicionalPersonal
-			condicionalPersonal(num, supermercado);
+			condicionalPersonal(num, supermercado,carrito);
 			
 		}
 	}
 	//Procedimiento en el cuel sequn el numero que haya elegido se realiza
 	//una accion u otra.
-	public static void condicionalPersonal(int num, Supermercado supermercado) {
+	public static void condicionalPersonal(int num, Supermercado supermercado,Carrito carrito) {
 		switch(num) {
 		case 1:{
 			supermercado.mostrarProductosPorSecciones();
@@ -226,7 +229,8 @@ static Scanner sc= new Scanner(System.in);
 			supermercado.comprobarStock();
 			break;
 		}
-		case 6:break;
+		case 6:bucleCliente(supermercado, carrito);break;
+		case 7:break;
 		default:System.out.println("Opcion no valida");
 		}
 	}
