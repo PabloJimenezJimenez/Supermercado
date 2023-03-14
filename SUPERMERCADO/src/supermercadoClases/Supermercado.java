@@ -16,7 +16,6 @@ static Scanner sc=new Scanner(System.in);
 		empleados= new HashSet<>();
 		productos= new HashSet<>();
 		clientes= new HashSet<>();
-		//this.carrito=carrito;
 		productosIniciales();
 
 	}

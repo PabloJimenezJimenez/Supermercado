@@ -22,8 +22,13 @@ public class Carrito {
 			if(stockrestante<0) {
 				System.out.println("No se puede añadir al carrito, ya que no hay productos");
 			}else{
-				a.setStock(stockrestante);
-				carrito.put(a, cantidad);
+				if(!carrito.containsKey(a)) {
+					a.setStock(stockrestante);
+					carrito.put(a, cantidad);
+				}else {
+					carrito.put(a, carrito.get(a)+cantidad);
+				}
+				
 			}
 		}else System.out.println("Producto no encontrado en el supermercado");
 	}
