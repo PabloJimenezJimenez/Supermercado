@@ -186,20 +186,5 @@ static Scanner sc=new Scanner(System.in);
 		default:
 		}
 	}
-	
-//	public Productos sacarProducto(String a) {
-//		
-//		for (Productos producto : productos) {
-//		
-//			if (producto.getNombre().equals(a)) {
-//				return producto;
-//			}
-//		}
-//		
-//	}
-//	
-	
-	
-	
-	
+		
 }

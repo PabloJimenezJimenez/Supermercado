@@ -109,7 +109,9 @@ static Scanner sc= new Scanner(System.in);
 		case 4:{
 				//mostrar carrito
 				carrito.mostrarCarrito();
-			
+
+				
+				
 			break;
 		}
 		case 5:{
@@ -131,8 +133,8 @@ static Scanner sc= new Scanner(System.in);
 		}
 		case 7:{
 			
-				//Pasar por caja
-				
+			//Pasar por caja
+			
 			TreeMap<Productos, Integer> carrito2 = new TreeMap<>();
 					
 			//hacemos el ticket de compra
@@ -206,7 +208,7 @@ static Scanner sc= new Scanner(System.in);
 		case 1:{
 			supermercado.mostrarProductosPorSecciones();
 			break;
-		}
+		} 
 		case 2:{
 			System.out.println("Introduzca el nombre del producto:");
 			String nombre=sc.next();
