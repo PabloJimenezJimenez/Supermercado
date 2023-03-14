@@ -23,8 +23,13 @@ static Scanner sc=new Scanner(System.in);
 	public void anadirEmpleados(Personal empleados) {
 		this.empleados.add(empleados);
 	}
-	public void anadirProductos(Productos productos) {
-		this.productos.add(productos);
+	public void anadirProductos(Productos product) {
+		for (Productos producto : productos) {
+			if(producto.getMarca().equalsIgnoreCase(product.getMarca())&& producto.getNombre().equalsIgnoreCase(product.getNombre())) {
+				System.out.println("Producto ya en stock");
+			}
+		}
+		this.productos.add(product);
 	}
 	public void anadirClientes(Cliente clientes) {
 		this.clientes.add(clientes) ;
@@ -35,6 +40,7 @@ static Scanner sc=new Scanner(System.in);
 				productos.remove(producto);break;
 			}
 		}
+		System.out.println("El producto no existe");
 	}
 	public void cambiarNombre(String nombre) {
 		this.nombre = nombre;
