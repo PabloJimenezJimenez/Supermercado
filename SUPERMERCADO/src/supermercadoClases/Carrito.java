@@ -63,4 +63,13 @@ public class Carrito {
 			System.out.printf("%-9s %d€ \n",elem.getKey().getNombre(),elem.getValue());
 		}
 	}*/
+	public double totalCompra() {
+		double total=0;
+		//Recorro el diccionario
+		for (Map.Entry<Productos, Integer> elem : carrito.entrySet()) {
+			//sumo a total el valor del elemento
+			total+=elem.getValue()*elem.getKey().getPrecio();
+		}
+		return total;
+	}
 }

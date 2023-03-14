@@ -1,9 +1,9 @@
 package supermercadoClases;
 
 
-import java.util.Iterator;
+
 import java.util.Scanner;
-import java.util.TreeMap;
+
 
 public class SupermercadoMain {
 static Scanner sc= new Scanner(System.in);
@@ -131,31 +131,10 @@ static Scanner sc= new Scanner(System.in);
 		}
 		case 7:{
 			
-				//Pasar por caja
-				
-			TreeMap<Productos, Integer> carrito2 = new TreeMap<>();
-					
-			//hacemos el ticket de compra
-			System.out.println("TICKET DE COMPRA");
-			
-			Iterator<Productos> elemento = carrito2.keySet().iterator();
-			Iterator<Integer> numeros = carrito2.values().iterator();
-			
-			int total = 0;
-			
-			while(elemento.hasNext() && numeros.hasNext()) {
-				
-				int suma = numeros.next();
-				
-				System.out.println(elemento.next() + "		" + suma);
-				
-				total = total + suma;
-				
-					
-			}
-					
-			System.out.println("TOTAL" + "		" + total + " €");	
-				
+			System.out.println("**************CESTA*********");
+			carrito.mostrarCarrito();
+			double total=carrito.totalCompra();
+			System.out.printf("%-20s %.2f€\n","TOTAL",total);
 			break;
 		}
 		case 8:break;
@@ -279,7 +258,6 @@ static Scanner sc= new Scanner(System.in);
 		default: return null;
 		}
 	}
-
 
 }
 	
