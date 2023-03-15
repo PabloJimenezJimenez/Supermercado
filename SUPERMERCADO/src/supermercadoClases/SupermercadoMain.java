@@ -72,7 +72,7 @@ static Scanner sc= new Scanner(System.in);
 	public static void bucleCliente(Supermercado supermercado,Carrito carrito) {
 		System.out.println("BIENVENIDO AL SUPERMERCADO JAVADONA");
 		int num=0;
-		while(num!=8) {
+		while(num!=9) {
 		menuCliente();
 		System.out.println("Introduce una opción:");
 		num=sc.nextInt();
@@ -174,7 +174,7 @@ static Scanner sc= new Scanner(System.in);
 	//Procedimiento buclePersonal que se repite hasta que se da a la opcion 6
 	public static void buclePersonal(Supermercado supermercado,Carrito carrito) {
 		int num=0;
-		while(num!=6) {
+		while(num!=7) {
 			//LLamo al procedimiento menuPersonal
 			menuPersonal();
 			System.out.println("Introduce una opcion");
