@@ -85,54 +85,18 @@ static Scanner sc=new Scanner(System.in);
 	
 	public void mostrarProductosPorSecciones() {
 		System.out.println(nombre);
-		System.out.println("-------------------");
-		System.out.println("FRUTERIA: ");
-		for(Productos producto: productos) {
-			if(producto.getSeccion().equals(Secciones.FRUTERIA)) {
-				producto.mostrarProducto();
-			}
-		}
-		System.out.println("-------------------");
-		System.out.println("CARNICERIA: ");
-		for(Productos producto: productos) {
-			if(producto.getSeccion().equals(Secciones.CARNICERIA)) {
-				producto.mostrarProducto();
-			}
-		}
-		System.out.println("-------------------");
-		System.out.println("PESCADERIA: ");
-		for(Productos producto: productos) {
-			if(producto.getSeccion().equals(Secciones.PESCADERIA)) {
-				producto.mostrarProducto();
-			}
-		}
-		System.out.println("-------------------");
-		System.out.println("HOGAR: ");
-		for(Productos producto: productos) {
-			if(producto.getSeccion().equals(Secciones.HOGAR)) {
-				producto.mostrarProducto();
-			}
-		}
-		System.out.println("-------------------");
-		System.out.println("BEBIDAS: ");
-		for(Productos producto: productos) {
-			if(producto.getSeccion().equals(Secciones.BEBIDA)) {
-				producto.mostrarProducto();
-			}
-		}
-		System.out.println("-------------------");
-		System.out.println("LACTEOS: ");
-		for(Productos producto: productos) {
-			if(producto.getSeccion().equals(Secciones.LACTEOS)) {
-				producto.mostrarProducto();
-			}
-		}
+		mostrarProductoSeccion(Secciones.FRUTERIA);
+		mostrarProductoSeccion(Secciones.CARNICERIA);
+		mostrarProductoSeccion(Secciones.PESCADERIA);
+		mostrarProductoSeccion(Secciones.HOGAR);
+		mostrarProductoSeccion(Secciones.BEBIDA);
+		mostrarProductoSeccion(Secciones.LACTEOS);
 		System.out.println("-------------------");
 		
 	}
 	
 	public void mostrarProductoSeccion(Secciones seccion) {
-		System.out.println(nombre);
+		
 		System.out.println("-------------------");
 		System.out.println(seccion.name());
 		for(Productos producto: productos) {
