@@ -34,12 +34,21 @@ static Scanner sc=new Scanner(System.in);
 		this.clientes.add(clientes) ;
 	}
 	public void eliminarProducto(String nombre) {
+		int longProd=productos.size();
 		for (Productos producto : productos) {
 			if(producto.getNombre().equals(nombre)) {
-				productos.remove(producto);break;
+				System.out.println("Desea eliminar el producto "+producto.getNombre()
+				+" "+producto.getMarca());
+				System.out.println("Introduzca [S/N]");
+				String ne=sc.next();
+				if(ne.equalsIgnoreCase("S")) {
+					productos.remove(producto);break;
+				}
 			}
 		}
-		System.out.println("El producto no existe");
+		if(longProd==productos.size()) {
+			System.out.println("El producto no existe o no se ha eliminado");
+		}
 	}
 	public void cambiarNombre(String nombre) {
 		this.nombre = nombre;

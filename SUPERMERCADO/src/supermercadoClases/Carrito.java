@@ -11,10 +11,7 @@ public class Carrito {
 	
 	public Carrito() {
 		this.carrito= new HashMap<>();
-		
-		
 	}
-	
 	
 	public void aniadirCarrito(Productos a, Integer cantidad) {
 		if(a !=null) {
