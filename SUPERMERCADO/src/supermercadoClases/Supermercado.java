@@ -36,7 +36,7 @@ static Scanner sc=new Scanner(System.in);
 	public void eliminarProducto(String nombre) {
 		int longProd=productos.size();
 		for (Productos producto : productos) {
-			if(producto.getNombre().equals(nombre)) {
+			if(producto.getNombre().equalsIgnoreCase(nombre)) {
 				System.out.println("Desea eliminar el producto "+producto.getNombre()
 				+" "+producto.getMarca());
 				System.out.println("Introduzca [S/N]");
