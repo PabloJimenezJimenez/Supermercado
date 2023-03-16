@@ -91,7 +91,6 @@ public class Carrito{
 		return total;
 	}
 	private void menuEliminar() {
-		System.out.println("********MENU*********");
 		System.out.println("1. ELIMINAR UNA CANTIDAD ");
 		System.out.println("2. ELIMINAR EL PRODUCTO");
 	}
