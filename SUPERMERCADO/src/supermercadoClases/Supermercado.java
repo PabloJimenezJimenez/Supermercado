@@ -108,7 +108,7 @@ static Scanner sc=new Scanner(System.in);
 	
 	public Productos sacarProducto(String nombre) {
 		for(Productos producto: productos) {
-			if(producto.getNombre().equals(nombre)) {
+			if(producto.getNombre().equalsIgnoreCase(nombre)) {
 				return producto;
 			}
 		}
