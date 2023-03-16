@@ -43,7 +43,7 @@ public class Carrito {
 	}
 	
 	public void mostrarCarrito() {
-	
+
 		if(carrito.size()==0) {
 			System.out.println("La cesta está vacia");
 		}
