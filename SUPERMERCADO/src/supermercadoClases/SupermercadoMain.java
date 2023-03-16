@@ -101,6 +101,7 @@ static Scanner sc= new Scanner(System.in);
 				System.out.println("¿Que producuto quieres añadir al carrito?");
 				String nombre=sc.next();
 				Productos a= supermercado.sacarProducto(nombre);
+				System.out.println("Cuantos quieres añadir");
 				int cant=sc.nextInt();
 				carrito.aniadirCarrito(a,cant);
 				break;

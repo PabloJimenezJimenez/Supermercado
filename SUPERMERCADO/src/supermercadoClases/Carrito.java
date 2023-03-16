@@ -32,9 +32,12 @@ public class Carrito {
 
 	public void eleminarProductoCarrito(Productos a) {
 		
-		int sumarstock= a.getStock()+carrito.get(a);
-		a.setStock(sumarstock);
-		carrito.remove(a);
+		if(carrito.containsKey(a)) {
+			int sumarstock= a.getStock()+carrito.get(a);
+			a.setStock(sumarstock);
+			carrito.remove(a);
+		}else System.out.println("Producto no encontrado en el carrito");
+		
 		
 		
 	}
@@ -46,6 +49,9 @@ public class Carrito {
 		}
 		//mostrarTreeMap(productosOrdenados);
 		*/
+		if(carrito.size()==0) {
+			System.out.println("La cesta está vacia");
+		}
 		for (Map.Entry<Productos, Integer> elem : carrito.entrySet()) {
 			System.out.printf("%-9s %duds %9.2f€/uds\n",elem.getKey().getNombre(),elem.getValue(),elem.getKey().getPrecio());
 		}
