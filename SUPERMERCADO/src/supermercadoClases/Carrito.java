@@ -63,12 +63,6 @@ public class Carrito{
 	}
 	
 	public void mostrarCarrito() {
-		/*TreeMap<Productos, Integer>productosOrdenados=new TreeMap<>();
-		for(Productos elem: carrito.keySet()) {
-			productosOrdenados.put(elem, carrito.get(elem));
-		}
-		//mostrarTreeMap(productosOrdenados);
-		*/
 		if(carrito.size()==0) {
 			System.out.println("La cesta está vacia");
 		}
