@@ -99,7 +99,8 @@ static Scanner sc= new Scanner(System.in);
 		case 3:{
 				//añadir producto del carrito
 				System.out.println("¿Que producuto quieres añadir al carrito?");
-				String nombre=sc.next();
+				sc.nextLine();
+				String nombre=sc.nextLine();
 				Productos a= supermercado.sacarProducto(nombre);
 				System.out.println("Cuantos quieres añadir");
 				int cant=sc.nextInt();
@@ -120,7 +121,8 @@ static Scanner sc= new Scanner(System.in);
 		case 5:{
 				//consultar carrito
 				System.out.println("Producto a consultar:");
-				String nombre=sc.next();
+				sc.nextLine();
+				String nombre=sc.nextLine();
 				Productos a= supermercado.sacarProducto(nombre);
 				carrito.consultarCarrito(a);
 			break;
@@ -128,7 +130,8 @@ static Scanner sc= new Scanner(System.in);
 		case 6:{
 				//eliminar producto
 				System.out.println("Producto a eliminar:");
-				String nombre=sc.next();
+				sc.nextLine();
+				String nombre=sc.nextLine();
 				Productos a= supermercado.sacarProducto(nombre);
 				carrito.eleminarProductoCarrito(a);
 			
@@ -195,9 +198,14 @@ static Scanner sc= new Scanner(System.in);
 		} 
 		case 2:{
 			System.out.println("Introduzca el nombre del producto:");
-			String nombre=sc.next();
+			sc.nextLine();
+			String nombre=sc.nextLine();
 			System.out.println("Introduzca cuantas unidades tiene:");
 			int stock=sc.nextInt();
+			while(stock<0) {
+				System.out.println("Stock no valido, vuelva a introducirlo");
+				stock=sc.nextInt();
+			}
 			System.out.println("Introduzca el precio por unidad:");
 			double precio=sc.nextDouble();
 			System.out.println("Introduzca la marca del producto:");
