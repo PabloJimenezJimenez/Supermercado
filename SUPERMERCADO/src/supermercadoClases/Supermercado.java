@@ -91,6 +91,7 @@ static Scanner sc=new Scanner(System.in);
 		mostrarProductoSeccion(Secciones.HOGAR);
 		mostrarProductoSeccion(Secciones.BEBIDA);
 		mostrarProductoSeccion(Secciones.LACTEOS);
+		mostrarProductoSeccion(Secciones.OTRO);
 		System.out.println("-------------------");
 		
 	}

@@ -255,6 +255,7 @@ static Scanner sc= new Scanner(System.in);
 		System.out.println("4.Hogar");
 		System.out.println("5.Bebidas");
 		System.out.println("6.Lacteos");
+		System.out.println("7.Sin Seccion");
 		int opcion=sc.nextInt();
 		while(opcion<1 && opcion>6) {
 			System.out.println("opcion no valida vuelvela a introducir");
@@ -271,7 +272,8 @@ static Scanner sc= new Scanner(System.in);
 		case 4: return Secciones.HOGAR;
 		case 5: return Secciones.BEBIDA;
 		case 6: return Secciones.LACTEOS;
-		default: return null;
+		case 7: return Secciones.OTRO;
+		default: return Secciones.OTRO;
 		}
 	}
 
